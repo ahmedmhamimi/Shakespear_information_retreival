@@ -1,9 +1,9 @@
 # Shakespeare Boolean Search Engine
 ### Information Retrieval – Week 7 Project
 
-![App Screenshot](images/flask_website.png)
 
 A complete Boolean search engine built over the 44-work Shakespeare corpus, implementing three indexing strategies, a full Boolean query parser with operator precedence, Levenshtein spell correction, interactive GUI, and precision/recall evaluation.
+![App Screenshot](images/flask_website.png)
 
 ---
 
