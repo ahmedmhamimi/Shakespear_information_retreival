@@ -17,9 +17,7 @@ A complete Boolean search engine built over the 44-work Shakespeare corpus, impl
    - [Evaluation](#45-evaluation)
 5. [Running the Notebook](#5-running-the-notebook)
 6. [Running the GUI](#6-running-the-gui)
-7. [Dependencies](#7-dependencies)
-8. [Evaluation Results in Detail](#8-evaluation-results-in-detail)
-9. [Known Limitations and Future Work](#9-known-limitations-and-future-work)
+7. [Evaluation Results in Detail](#7-evaluation-results-in-detail)
 
 ---
 
@@ -234,19 +232,6 @@ http://localhost:5000
 
 ---
 
-## 7. Dependencies
-
-| Package | Version | Purpose |
-|---|---|---|
-| `nltk` | ≥ 3.8 | Tokenization, stop words, lemmatization, stemming |
-| `numpy` | ≥ 1.24 | Array operations for TDIM visualizations |
-| `pandas` | ≥ 2.0 | Evaluation results table |
-| `matplotlib` | ≥ 3.7 | All charts and visualizations |
-| `seaborn` | ≥ 0.12 | Heatmaps |
-| `flask` | ≥ 3.0 | Web GUI server (`search_gui.py` only) |
-
----
-
 ## 8. Evaluation Results in Detail
 
 ### Per-query Precision and Recall
@@ -279,24 +264,3 @@ http://localhost:5000
 
 The BST is slowest to build due to per-token tree traversal. The inverted index is fastest and is the preferred structure for query processing.
 
----
-
-## 9. Known Limitations and Future Work
-
-**1. Boolean NOT on universal terms collapses retrieval.**
-When a negated term appears in every document (e.g., "love" in a Shakespeare corpus), `NOT love` returns an empty set. Possible fixes: exclude stop-like high-frequency terms from NOT queries, or switch to a ranked model.
-
-**2. No ranking within Boolean results.**
-Documents are returned in document-ID order, not by relevance. Adding TF-IDF scoring to rank the Boolean result set would dramatically improve precision at small cutoffs.
-
-**3. BST is unbalanced.**
-Inserting a sorted vocabulary into a standard BST produces a degenerate linked list (O(n) search). Replacing `Tree` with an AVL or red-black tree would restore O(log n) guarantees.
-
-**4. Spell correction is O(|vocabulary|) per unknown term.**
-With a ~15,000 term vocabulary this is acceptable, but it would not scale to web-scale corpora. A BK-tree or edit-distance index would reduce correction to O(log |vocabulary|) lookups.
-
-**5. Ground truth is manually constructed.**
-The 20 evaluation queries use hand-labelled relevance sets which may be incomplete. A more rigorous evaluation using pooled judgements or automatic relevance from known textual metadata would give more reliable precision/recall figures.
-
-**6. Single-language support.**
-The preprocessing pipeline uses English NLTK resources. Non-English text would require language-specific tokenizers and stop-word lists.
