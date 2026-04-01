@@ -1,4 +1,4 @@
-# 🎭 Shakespeare Boolean Search Engine
+# Shakespeare Boolean Search Engine
 ### Information Retrieval – Week 7 Project
 
 A complete Boolean search engine built over the 44-work Shakespeare corpus, implementing three indexing strategies, a full Boolean query parser with operator precedence, Levenshtein spell correction, interactive GUI, and precision/recall evaluation.
