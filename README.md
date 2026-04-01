@@ -234,7 +234,7 @@ http://localhost:5000
 
 ---
 
-## 8. Evaluation Results in Detail
+## 7. Evaluation Results in Detail
 
 ### Per-query Precision and Recall
 
